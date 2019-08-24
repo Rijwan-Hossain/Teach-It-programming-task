@@ -33,7 +33,6 @@ class OneTodo extends Component {
                     name="todo" 
                     value={this.props.todo.task} 
                     onClick={() => this.props.checkbox(this.props.todo.id)} 
-                    className="my-1 mx-3"  
                 /> 
                 
                 { 

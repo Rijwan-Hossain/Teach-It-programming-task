@@ -19,18 +19,21 @@ class ShowTodo extends Component {
         console.log(this.props.todos); 
         let { todos } = this.props; 
         return ( 
-            <div style={{marginLeft: '20px'}}> 
-                <h4>All Todos</h4> 
+            <div style={{margin: '20px'}}> 
+                <h4 style={{textAlign: 'center'}}> 
+                    All Todos 
+                </h4> 
                 <ul> 
                 { 
                     todos.map(todo => { 
                         return( 
                             <OneTodo 
                                 key={todo.id} 
-                                checkbox={this.checkbox}
-                                delete={this.delete}
-                                update={this.update}
-                                todo={todo} /> 
+                                checkbox={this.checkbox} 
+                                delete={this.delete} 
+                                update={this.update} 
+                                todo={todo} 
+                            /> 
                         ) 
                     }) 
                 } 
