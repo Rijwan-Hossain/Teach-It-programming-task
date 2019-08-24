@@ -8,7 +8,11 @@ class ShowTodo extends Component {
     } 
 
     delete = (id) => { 
-        this.props.delete(id) 
+        this.props.delete(id); 
+    } 
+
+    update = (todo) => { 
+        this.props.update(todo) 
     } 
 
     render() { 
@@ -25,6 +29,7 @@ class ShowTodo extends Component {
                                 key={todo.id} 
                                 checkbox={this.checkbox}
                                 delete={this.delete}
+                                update={this.update}
                                 todo={todo} /> 
                         ) 
                     }) 
@@ -41,7 +46,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({ 
     checkTodo: (id) => dispatch({type: 'CHECK_TODO', payload: id}), 
-    delete: (id) => dispatch({type: 'DELETE_TODO', payload: id}) 
+    delete: (id) => dispatch({type: 'DELETE_TODO', payload: id}), 
+    update: (todo) => dispatch({type: 'UPDATE_TODO', payload: todo})
 }) 
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShowTodo); 
+

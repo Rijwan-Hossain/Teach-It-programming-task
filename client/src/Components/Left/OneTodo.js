@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import Popup from 'reactjs-popup' 
 
 class OneTodo extends Component { 
-    state = {
-        ischecked: false
+    state = { 
+        ischecked: false, 
+        editTask: this.props.todo.task  
     } 
 
     checkListener = (id) => { 
@@ -11,6 +13,12 @@ class OneTodo extends Component {
         }) 
     } 
 
+
+    editHandler = (e) => { 
+        this.setState({ 
+            [e.target.name]: e.target.value 
+        }) 
+    } 
 
     render() { 
         return ( 
@@ -43,14 +51,42 @@ class OneTodo extends Component {
                         </p> 
                 } 
 
-                <button 
-                    style={{ 
-                        marginLeft: 'auto', 
-                        marginBottom: '5px' 
-                    }} 
-                > 
-                    update 
-                </button> 
+                <Popup 
+                    trigger={ 
+                        <button style={{ 
+                            marginLeft: 'auto', 
+                            marginBottom: '5px' 
+                        }}> 
+                        Update 
+                        </button> 
+                    } 
+                    position="right center"> 
+                    <div> 
+                        <input 
+                            type="text" 
+                            name='editTask' 
+                            style={{ 
+                                margin: '10px', 
+                                padding: '8px' 
+                            }}
+                            value={this.state.editTask} 
+                            onChange={this.editHandler} 
+                        /> 
+                        <button 
+                            style={{
+                                marginLeft: '10px'
+                            }}
+                            onClick={ 
+                                () => 
+                                    this.props.update({ 
+                                        ...this.props.todo, 
+                                        task: this.state.editTask
+                                    }) 
+                            }> 
+                            Send 
+                        </button> 
+                    </div> 
+                </Popup> 
 
                 <button 
                     onClick={() => this.props.delete(this.props.todo.id)} 
@@ -59,7 +95,7 @@ class OneTodo extends Component {
                         marginLeft: '5px'
                     }} 
                 > 
-                    Delete
+                    Delete 
                 </button> 
             </li> 
         ) 

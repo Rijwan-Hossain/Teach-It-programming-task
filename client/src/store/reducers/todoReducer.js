@@ -16,6 +16,18 @@ const todoReducer = (state = [], action) => {
             }) 
             return todos 
         } 
+        case 'UPDATE_TODO': { 
+            console.log('action.payload');
+            console.log(action.payload);
+            
+            let todos = state.map(todo => { 
+                if(todo.id === action.payload.id) { 
+                    return action.payload 
+                } 
+                return todo 
+            }) 
+            return todos 
+        } 
         case 'DELETE_TODO': { 
             let todos = state.filter(todo => { 
                 if(todo.id !== action.payload) { 
