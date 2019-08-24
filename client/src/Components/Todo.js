@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import CreateTodo from './Left/CreateTodo'
+import ShowTodo from './Left/ShowTodo'
 
 class Todo extends Component {
     render() {
@@ -10,6 +11,7 @@ class Todo extends Component {
                         Create Todo 
                     </h3> 
                     <CreateTodo /> 
+                    <ShowTodo /> 
                 </div> 
 
                 <div style={{width: '50%', textAlign: 'center'}}> 

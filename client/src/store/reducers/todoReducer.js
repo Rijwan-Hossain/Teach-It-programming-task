@@ -6,6 +6,24 @@ const todoReducer = (state = [], action) => {
             let todos = state.concat(action.payload) 
             return todos; 
         } 
+        case 'CHECK_TODO': { 
+            let todos = state.map(todo => { 
+                if(todo.id === action.payload) { 
+                    todo.isComplete = !todo.isComplete 
+                    return todo 
+                } 
+                return todo 
+            }) 
+            return todos 
+        } 
+        case 'DELETE_TODO': { 
+            let todos = state.filter(todo => { 
+                if(todo.id !== action.payload) { 
+                    return todo 
+                } 
+            }) 
+            return todos 
+        } 
         default: { 
             return state; 
         } 

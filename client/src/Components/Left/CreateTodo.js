@@ -16,16 +16,15 @@ class CreateTodo extends Component {
 
     submitHandler = (e) => { 
         e.preventDefault(); 
-        let todo = {
+        let todo = { 
             task: this.state.task, 
-            id: uuid() 
-        }
+            id: uuid(), 
+            isComplete: false 
+        } 
         this.props.add(todo); 
     } 
 
     render() { 
-        console.log(this.props); 
-        
         return ( 
             <div> 
                 <form 
@@ -60,12 +59,9 @@ class CreateTodo extends Component {
     } 
 } 
 
-const mapStateToProps = (state) => ({ 
-    todos: state.todos 
-}) 
 
 const mapDispatchToProps = (dispatch) => ({ 
     add: (data) => dispatch({type: 'ADD_TODO', payload: data}) 
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateTodo); 
+export default connect(null, mapDispatchToProps)(CreateTodo); 
