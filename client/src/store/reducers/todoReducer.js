@@ -1,5 +1,15 @@
+
+
 const todoReducer = (state = [], action) => { 
-    return state; 
+    switch(action.type) { 
+        case 'ADD_TODO': { 
+            let todos = state.concat(action.payload) 
+            return todos; 
+        } 
+        default: { 
+            return state; 
+        } 
+    } 
 } 
 
 export default todoReducer; 
